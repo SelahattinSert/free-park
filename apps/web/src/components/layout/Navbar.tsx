@@ -41,7 +41,7 @@ export default function Navbar() {
   const demoText = lang === 'TR' ? 'Demo İndir' : 'Download Demo';
 
   const toggleLang = () => {
-    setLang(prev => prev === 'TR' ? 'EN' : 'TR');
+    setLang(lang === 'TR' ? 'EN' : 'TR');
   };
 
   return (
