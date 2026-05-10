@@ -82,7 +82,7 @@ export default function AboutPage() {
             initial={{ y: 24, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="mb-[24px]"
+            className="mb-[24px] break-words md:break-normal"
           >
             {current.heroTitleStart} <span className="text-[color:var(--color-primary-dark)]">{current.heroTitleHighlight}</span>
           </motion.h1>
@@ -106,7 +106,7 @@ export default function AboutPage() {
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
             >
-              <h2>
+              <h2 className="break-words md:break-normal">
                 {current.missionQuote}
               </h2>
             </motion.div>
