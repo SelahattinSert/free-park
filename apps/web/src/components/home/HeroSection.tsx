@@ -9,7 +9,7 @@ export default function HeroSection() {
 
   const t = {
     TR: {
-      badge: "Sistem Aktif & Hazır",
+      badge: "Yeni Nesil Akıllı Bariyer",
       titleStart: "Park Etmek Artık ",
       titleHighlight: "Özgür.",
       desc: "Free Park ile otopark bariyerinizi telefonunuzdan, her yerden anında kontrol edin. Kodsuz kurulum, kesintisiz bağlantı.",
@@ -19,7 +19,7 @@ export default function HeroSection() {
       mockupStatus: "AÇIK"
     },
     EN: {
-      badge: "System Active & Ready",
+      badge: "Next Generation Smart Barrier",
       titleStart: "Parking is Now ",
       titleHighlight: "Free.",
       desc: "Control your parking barrier instantly from your phone, from anywhere with Free Park. Codeless setup, seamless connection.",
