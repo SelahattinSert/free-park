@@ -5,9 +5,12 @@ import { Feather } from '@expo/vector-icons';
 import { deviceStatus } from '../../constants/mockData';
 import Animated, { useSharedValue, useAnimatedStyle, withSpring, withTiming, withRepeat, Easing } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
+import { useColorScheme } from 'nativewind';
 
 export default function HomeScreen() {
+  const { colorScheme } = useColorScheme();
   const [barrierState, setBarrierState] = useState(deviceStatus.barrierState);
+  const isDark = colorScheme === 'dark';
   
   const scale = useSharedValue(1);
   const rotation = useSharedValue(0);
@@ -70,7 +73,7 @@ export default function HomeScreen() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#f5f5f5' }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: isDark ? '#0f172a' : '#f5f5f5' }}>
       <ScrollView contentContainerStyle={{ padding: 20 }} showsVerticalScrollIndicator={false}>
         
         {/* Header */}
@@ -87,18 +90,18 @@ export default function HomeScreen() {
         </View>
 
         {/* Durum Kartı */}
-        <View style={{ backgroundColor: 'white', borderRadius: 16, padding: 16, marginBottom: 40, shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.05, shadowRadius: 4, elevation: 2 }}>
+        <View style={{ backgroundColor: isDark ? '#1e293b' : 'white', borderRadius: 16, padding: 16, marginBottom: 40, shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.05, shadowRadius: 4, elevation: 2 }}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <Feather name="wifi" size={16} color="#2c5d63" />
-              <Text style={{ marginLeft: 6, color: '#283739', fontWeight: '600' }}>WiFi</Text>
+              <Text style={{ marginLeft: 6, color: isDark ? '#f8fafc' : '#283739', fontWeight: '600' }}>WiFi</Text>
               <Text style={{ marginLeft: 4, color: '#8a9a9b' }}>{deviceStatus.signalStrength}%</Text>
             </View>
             
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <Feather name="battery" size={16} color="#2c5d63" />
-              <Text style={{ marginLeft: 6, color: '#283739', fontWeight: '600' }}>{deviceStatus.batteryLevel}%</Text>
+              <Text style={{ marginLeft: 6, color: isDark ? '#f8fafc' : '#283739', fontWeight: '600' }}>{deviceStatus.batteryLevel}%</Text>
             </View>
             
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
