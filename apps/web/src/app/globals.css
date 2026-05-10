@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-bg: var(--tw-color-bg);
+  --color-surface: var(--tw-color-surface);
+  --color-surface-2: var(--tw-color-surface-2);
+  --color-border: var(--tw-color-border);
+  
+  --color-text-main: var(--tw-color-text-main);
+  --color-text-muted: var(--tw-color-text-muted);
+  
+  --color-brand-dark: var(--tw-color-brand-dark);
+  
+  --color-primary: #a9c52f;
+  --color-primary-dark: #8ba324;
+
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --animate-fade-in-up: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer base {
+  :root {
+    --tw-color-bg: #f8fafc;
+    --tw-color-surface: #ffffff;
+    --tw-color-surface-2: #f1f5f9;
+    --tw-color-border: #e2e8f0;
+    --tw-color-text-main: #0f172a;
+    --tw-color-text-muted: #64748b;
+    --tw-color-brand-dark: #0f172a;
+    background-color: var(--color-bg);
+    color: var(--color-text-main);
+  }
+
+  :root.dark {
+    --tw-color-bg: #0f172a;
+    --tw-color-surface: #1e293b;
+    --tw-color-surface-2: #0f172a; /* Make secondary surface blend in dark mode */
+    --tw-color-border: #334155;
+    --tw-color-text-main: #f8fafc;
+    --tw-color-text-muted: #94a3b8;
+    --tw-color-brand-dark: #ffffff;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--color-text-main);
+    letter-spacing: -0.02em;
+    max-width: 18ch; /* Limits heading width for readability */
+  }
+
+  h1 { font-size: clamp(48px, 6vw, 72px); }
+  h2 { font-size: clamp(36px, 5vw, 56px); }
+  h3 { font-size: clamp(24px, 3vw, 32px); }
+
+  p {
+    color: var(--color-text-muted);
+    max-width: 68ch; /* Optimal reading length */
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: #0f172a;
+  }
+}
+
+@layer components {
+  /* 1. Global Container System */
+  .container-strict {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-inline: 24px;
+  }
+
+  /* 2. Vertical Rhythm (8pt system) */
+  .section-rhythm {
+    padding-block: 96px;
+  }
+  
+  .section-header {
+    margin-bottom: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* 4. Standardized Card Anatomy */
+  .card-standard {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 24px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .card-standard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+  }
+
+  .card-icon-box {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background-color: var(--color-surface-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-brand-dark);
+    flex-shrink: 0;
+    transition: background-color 0.3s ease;
+  }
+
+  /* CTA Button */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 32px;
+    background-color: var(--color-primary);
+    color: #0f172a; /* Force dark text on primary button regardless of theme */
+    border-radius: 9999px; /* Pill shape */
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(169, 197, 47, 0.25);
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 32px;
+    background-color: transparent;
+    color: var(--color-text-main);
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-surface-2);
+    border-color: var(--color-text-muted);
+  }
+}
