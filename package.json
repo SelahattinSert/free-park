@@ -1,0 +1,17 @@
+{
+  "name": "freepark-monorepo",
+  "private": true,
+  "packageManager": "npm@10.8.2",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "turbo run dev --filter=web",
+    "dev:mobile": "turbo run start --filter=mobile",
+    "build:web": "turbo run build --filter=web"
+  },
+  "devDependencies": {
+    "turbo": "latest"
+  }
+}
